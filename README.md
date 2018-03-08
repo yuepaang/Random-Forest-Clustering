@@ -37,3 +37,9 @@ The RF dissimilarity easily deals with a large number of variables due to its in
 3. Compare clusters based on their
 * Clinical characteristics
 * RNA sequencing data (when available)
+
+[Reference]
+Tao Shi & Steve Horvath (2006) Unsupervised Learning With Random
+Forest Predictors, Journal of Computational and Graphical Statistics, 15:1, 118-138, DOI:
+10.1198/106186006X94072
+http://dx.doi.org/10.1198/106186006X94072
