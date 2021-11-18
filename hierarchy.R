@@ -5,8 +5,7 @@ library(factoextra) # clustering visualization
 library(dendextend) # for comparing two dendrograms
 library(ggplot2)
 
-setwd("D:/Google Drive/RA/DECAMP/Code")
-dat <- read.csv("Imaging feature data for Yue 20171003.csv",stringsAsFactors=FALSE)
+dat <- read.csv("data.csv",stringsAsFactors=FALSE)
 train <- dat[,3:100]
 
 # make sure all are numeric data

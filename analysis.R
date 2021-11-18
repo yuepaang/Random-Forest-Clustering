@@ -1,4 +1,4 @@
-dat <- read.csv("Merged body comp and phenotype data 20170425.csv")
+dat <- read.csv("data.csv")
 dat <- dat[1:211,]
 source("RFDist.R")
 source("PAM.R")
@@ -28,7 +28,7 @@ distRF$imp1[,4][distRF$imp1[,4]>2.5]
 
 
 library(sas7bdat)
-clinical_data1 <- read.sas7bdat("decamp1cluster.sas7bdat")
+clinical_data1 <- read.sas7bdat("data.sas7bdat")
 
 case_name <- sapply(dat$Case, as.character)
 split1 <- function(x){
@@ -38,7 +38,7 @@ converted_case <- matrix(unlist(split1(case_name)),ncol=2,byrow = T)
 dat$study <- converted_case[, 1]
 dat$cn <- converted_case[, 2]
 
-clinical_data1 <- clinical_data1[clinical_data1$cn %in% dat[which(dat$study=="4703"),]$cn,] 
+clinical_data1 <- clinical_data1[clinical_data1$cn %in% dat[which(dat$study=="A"),]$cn,] 
 clinical_data1$label1 <- dat$label1
 clinical_data1$label2 <- dat$label2
 clinical_data1$label3 <- dat$label3

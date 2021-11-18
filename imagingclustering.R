@@ -1,12 +1,12 @@
 # imaging data analysis
-airway_data_1 <- read.csv("DECAMP1_washko_airway_baselineCT_forR.csv")
-airway_data_2 <- read.csv("DECAMP2_washko_airway_baselineCT_forR.csv")
-body_composition_data_1 <- read.csv("DECAMP1_washko_CTbodycomp_baselineCT_forR.csv")
-body_composition_data_2 <- read.csv("DECAMP2_washko_CTbodycomp_baselineCT_forR.csv")
-densitometry_data_1 <- read.csv("DECAMP1_washko_baselineCT_rev_forR.csv")
-densitometry_data_2 <- read.csv("DECAMP2_washko_baselineCT_rev_forR.csv")
-phenotype_data_1 <- read.csv("DECAMP1_washko_CTphenotype_baselineCT_forR.csv")
-phenotype_data_2 <- read.csv("DECAMP2_washko_CTphenotype_baselineCT_forR.csv")
+airway_data_1 <- read.csv(".csv")
+airway_data_2 <- read.csv(".csv")
+body_composition_data_1 <- read.csv(".csv")
+body_composition_data_2 <- read.csv(".csv")
+densitometry_data_1 <- read.csv("csv")
+densitometry_data_2 <- read.csv("csv")
+phenotype_data_1 <- read.csv("csv")
+phenotype_data_2 <- read.csv("csv")
 
 # combine the data according to "cn"
 idx1 <- intersect(intersect(intersect(airway_data_1$cn, body_composition_data_1$cn), 
@@ -14,17 +14,17 @@ idx1 <- intersect(intersect(intersect(airway_data_1$cn, body_composition_data_1$
 idx2 <- intersect(intersect(intersect(airway_data_2$cn, body_composition_data_2$cn), 
                             densitometry_data_2$cn), phenotype_data_2$cn)
 
-decamp1 <- cbind(airway_data_1[which(airway_data_1$cn %in% idx1),],
+data1 <- cbind(airway_data_1[which(airway_data_1$cn %in% idx1),],
                  body_composition_data_1[which(body_composition_data_1$cn %in% idx1),],
                  densitometry_data_1[which(densitometry_data_1$cn %in% idx1),],
                  phenotype_data_1[which(phenotype_data_1$cn %in% idx1),])
 
-decamp2 <- cbind(airway_data_2[which(airway_data_2$cn %in% idx2),],
+data2 <- cbind(airway_data_2[which(airway_data_2$cn %in% idx2),],
                  body_composition_data_2[which(body_composition_data_2$cn %in% idx2),],
                  densitometry_data_2[which(densitometry_data_2$cn %in% idx2),],
                  phenotype_data_2[which(phenotype_data_2$cn %in% idx2),])
 # extract the features to analyze
-imaging_data <- rbind(decamp1, decamp2)[,-c(1:6,79:86, 88:92)]
+imaging_data <- rbind(data1, data2)[,-c(1:6,79:86, 88:92)]
 
 # remove the missing value 
 na_count <- function(x){

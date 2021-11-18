@@ -1,5 +1,5 @@
 library(sas7bdat)
-dat <- read.sas7bdat("decamp1cluster.sas7bdat")
+dat <- read.sas7bdat("data.sas7bdat")
 status_var <- c("sex", "ethnicity", "race", "education", "marital", "income", "deploy")
 current_military_status<- c("active", "retired", "veteran", "fammember")
 cough_var <- c(dat$cough, dat$cough46, dat$coughmorning, dat$coughnight,dat$cough3mos,

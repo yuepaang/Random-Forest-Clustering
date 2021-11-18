@@ -1,5 +1,5 @@
 # Analysis
-dat <- read.csv("Imaging feature data for Yue 20171003.csv",stringsAsFactors=FALSE)
+dat <- read.csv("data.csv",stringsAsFactors=FALSE)
 dat <- na.omit(dat)
 source("RFDist.R")
 source("PAM.R")
@@ -64,21 +64,19 @@ converted_case <- matrix(unlist(split1(case_name)),ncol=2,byrow = T)
 dat$study <- converted_case[, 1]
 dat$cn <- converted_case[, 2]
 library(sas7bdat)
-clinical_data1 <- read.sas7bdat("decamp1cluster.sas7bdat")
-clinical_data2 <- read.sas7bdat("decamp2cluster.sas7bdat")
-dat1 <- dat[which(dat$study=="4703"),]
-dat2 <- dat[which(dat$study=="4704"),]
+clinical_data1 <- read.sas7bdat("data.sas7bdat")
+clinical_data2 <- read.sas7bdat("data.sas7bdat")
+dat1 <- dat[which(dat$study=="A"),]
+dat2 <- dat[which(dat$study=="B"),]
 
-# Study 4703
-clinical_data1 <- clinical_data1[clinical_data1$cn %in% dat[which(dat$study=="4703"),]$cn,] 
+clinical_data1 <- clinical_data1[clinical_data1$cn %in% dat[which(dat$study=="A"),]$cn,] 
 clinical_data1$label1 <- dat1$label1
 clinical_data1$label2 <- dat1$label2
 clinical_data1$label3 <- dat1$label3
 
 
 
-# Study 4704
-clinical_data2 <- clinical_data2[clinical_data2$cn %in% dat[which(dat$study=="4704"),]$cn,] 
+clinical_data2 <- clinical_data2[clinical_data2$cn %in% dat[which(dat$study=="B"),]$cn,] 
 clinical_data2$label1 <- dat2$label1
 clinical_data2$label2 <- dat2$label2
 clinical_data2$label3 <- dat2$label3
@@ -140,7 +138,7 @@ text(cmd2, label = ifelse(dat$label1==1, "1", "2"),
 plot(cmd1, type = "n", xlab = "Scaling Dimension 1", ylab = "Scaling Dimension 2")
 points(cmd1, pch = ifelse(dat$label1==1, 1, 3),
      col = ifelse(dat$study=="4703","red","blue"))
-legend(0.23,0.315,c("decamp1","decamp2"),pch=15,text.width = 0.1,
+legend(0.23,0.315,c("data1","data2"),pch=15,text.width = 0.1,
        y.intersp=0.5, x.intersp = 1,
        col = c("red","blue"))
 
@@ -170,7 +168,7 @@ text(cmd1, label = ifelse(dat$label2==1, "1",
 plot(cmd1, type = "n", xlab = "Scaling Dimension 1", ylab = "Scaling Dimension 2")
 points(cmd1, pch = ifelse(dat$label2==1, 3, ifelse(dat$label2==2,1,2)),
      col = ifelse(dat$study=="4703","red","blue"))
-legend(0.23,0.315,c("decamp1","decamp2"),pch=15,text.width = 0.1,
+legend(0.23,0.315,c("data1","data2"),pch=15,text.width = 0.1,
        y.intersp=0.5, x.intersp = 1,
        col = c("red","blue"))
  ###############
